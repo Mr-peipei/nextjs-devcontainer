@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Docker環境構築 
 
-## Getting Started
+## 主要コマンド
 
-First, run the development server:
+### Docker起動コマンド
 
+docker-compose.ymlに書かれているサービスを起動する。
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+docker compose up -d
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+-dオプションを付与することでバックグラウンド実行可能。
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Docker停止コマンド
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+docker-compose.ymlに書かれているサービスを停止する。
+```bash
+docker compose down
+```
 
-## Learn More
+### Dockerイメージbuild＋起動コマンド
 
-To learn more about Next.js, take a look at the following resources:
+Dockerfileを編集後に既存のコンテナに反映するには、  
+1. イメージの構築
+2. コンテナの構築
+3. コンテナの起動
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+が必要。  
+Dockerfileを使用すると以下のコマンドでイメージ構築から実施。
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+```bash
+docker compose up --build -d
+```
 
-## Deploy on Vercel
+### Dockerコンテナステータス確認コマンド
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+現在起動しているコンテナの確認。
+```bash
+docker ps
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+全てのコンテナの一覧を確認。
+```bash
+docker ps -a
+```
+
+###  Dockerイメージ確認コマンド
+
+Dockerfileで作成したイメージの確認。
+```bash
+docker images
+```
