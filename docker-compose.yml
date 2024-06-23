@@ -1,11 +1,14 @@
 version: '3.9'
-volumes:
-  node-modules:
 services:
   next:
     build:
       context: .
       dockerfile: Dockerfile
     volumes:
-      - node-modules:/app/node_modules
+      - .:/app
+      - /app/node_modules
+    ports:
+      - 3000:3000
+    environment:
+      - NODE_ENV=development
     tty: true
