@@ -10,7 +10,7 @@ const bull = (
   </Box>
 );
 
-const Page = ()=>{
+const Page = () =>{
 	return (
 		<Container>
 			<Card sx={{ minWidth: 275 }}>
